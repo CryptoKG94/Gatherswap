@@ -1,0 +1,376 @@
+<!doctype html>
+<html class="h-full bg-blue-03">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="assets/favicon.png" type="image/x-icon" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
+        <link rel="stylesheet" href="assets/app.css">
+        <title>Swap: GatherSwap</title>
+    </head>
+    <body class="h-full" x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false">
+        <!-- modals -->
+        <!-- overlay -->
+        <div
+            class="overflow-auto"
+            style="background-color: rgba(20,2,65,0.5);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);"
+            x-show="isDialogOpen"
+            :class="{ 'absolute inset-0 z-20 flex items-start justify-center': isDialogOpen }"
+        >
+            <!-- dialog -->
+            <div
+            class="bg-blue-03 text-white shadow-2xl m-4 sm:m-8 rounded-lg lg:w-1/5 w-full"
+            x-show="isDialogOpen"
+            @click.away="isDialogOpen = false"
+            >
+                <div class="flex justify-between items-center border-b border-indigo-900 p-4 font-bold">
+                    <h6>Pay with:</h6>
+                    <button type="button" @click="isDialogOpen = false">✖</button>
+                </div>
+                <div class="p-4">
+                    <!-- content -->
+                    <div class="my-1 relative rounded-md shadow-sm text-indigo-900">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentcolor"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path><path d="M11.412 8.586c.379.38.588.882.588 1.414h2a3.977 3.977 0 0 0-1.174-2.828c-1.514-1.512-4.139-1.512-5.652 0l1.412 1.416c.76-.758 2.07-.756 2.826-.002z"></path></svg>
+                        </div>
+                        <input type="search" name="searchToken" id="searchToken" class="focus:ring-indigo-500 focus:border-indigo-500 text-indigo-900 focus:bg-white block w-full pl-10 sm:text-sm border-indigo-300 rounded-md" placeholder="Search token name or paste address">
+                    </div>
+                    <div class="max-h-96 overflow-y-auto mt-4">
+                        <ul role="list" class="relative z-0 rounded-md bg-blue-02 text-white">
+                            <li>
+                                <div class="relative p-3 flex items-center space-x-3 rounded-md hover:bg-indigo-800 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                                    <div class="flex-shrink-0">
+                                        <img src="assets/tokens/eth.svg" alt="Ethereum" class="h-8">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <a href="#" class="focus:outline-none flex items-center justify-between">
+                                            <div>
+                                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                                <p class="font-bold uppercase">ETH</p>
+                                            </div>
+                                            
+                                            <p class="text-sm truncate">Ethereum</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="relative p-3 flex items-center space-x-3 rounded-md hover:bg-indigo-800 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                                    <div class="flex-shrink-0">
+                                        <img src="assets/tokens/usdc.svg" alt="USD Coin" class="h-8">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <a href="#" class="focus:outline-none flex items-center justify-between">
+                                            <div>
+                                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                                <p class="font-bold uppercase">USDC</p>
+                                            </div>
+                                            
+                                            <p class="text-sm truncate">USD Coin</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="relative p-3 flex items-center space-x-3 rounded-md hover:bg-indigo-800 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                                    <div class="flex-shrink-0">
+                                        <img src="assets/tokens/1inch.svg" alt="1inch" class="h-8">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <a href="#" class="focus:outline-none flex items-center justify-between">
+                                            <div>
+                                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                                <p class="font-bold uppercase">1inch</p>
+                                            </div>
+                                            
+                                            <p class="text-sm truncate">1inch Token</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="relative p-3 flex items-center space-x-3 rounded-md hover:bg-indigo-800 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                                    <div class="flex-shrink-0">
+                                        <img src="assets/tokens/aave.svg" alt="AAVE" class="h-8">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <a href="#" class="focus:outline-none flex items-center justify-between">
+                                            <div>
+                                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                                <p class="font-bold uppercase">aave</p>
+                                            </div>
+                                            
+                                            <p class="text-sm truncate">Aave Token</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="relative p-3 flex items-center space-x-3 rounded-md hover:bg-indigo-800 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                                    <div class="flex-shrink-0">
+                                        <img src="assets/tokens/usdt.svg" alt="Tether USD" class="h-8">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <a href="#" class="focus:outline-none flex items-center justify-between">
+                                            <div>
+                                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                                <p class="font-bold uppercase">USDT</p>
+                                            </div>
+                                            
+                                            <p class="text-sm truncate">Tether USD</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#" class="flex justify-center items-center border-t border-indigo-900 p-4 text-sm hover:text-indigo-200 text-indigo-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentcolor"><path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path><path d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z"></path></svg>
+                    <span class="ml-2"> Manage token list</span>
+                </a>
+            </div><!-- /dialog -->
+        </div><!-- /overlay -->
+
+
+        <div class="min-h-full"> 
+            <nav class="bg-blue-02 flex items-center justify-between flex-wrap fixed w-full z-10 top-0"
+                x-data="{ isOpen: false }"
+                @keydown.escape="isOpen = false"
+            >
+                <div class="container mx-auto lg:px-4 px-2">
+                    <div class="flex items-center justify-between h-16">
+                        <!-- mobile menu -->
+                        <button
+                        @click="isOpen = !isOpen"
+                        type="button"
+                        class="block lg:hidden px-2 text-indigo-200 hover:text-white focus:outline-none focus:text-white"
+                        :class="{ 'transition transform-180': isOpen }"
+                        >
+                            <svg class="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    x-show="isOpen"
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
+                                />
+                                <path
+                                    x-show="!isOpen"
+                                    fill-rule="evenodd"
+                                    d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+                                />
+                            </svg>
+                        </button>
+                        <div class="lg:flex items-center">
+                            <!-- brand -->
+                            <a href="index.html" class="flex items-center flex-shrink-0 text-white mr-6">
+                                <img class="h-8 w-8" src="assets/GatherSwap-Logo-Icon.svg" alt="GatherSwap">
+                                <span class="text-white font-bold ml-2">GatherSwap</span>
+                            </a>
+
+                            <!--Menu-->
+                            <div class="h-screen w-9/12 top-16 left-0 bg-blue-02 block absolute w-full flex-grow lg:top-auto lg:left-auto lg:relative lg:flex lg:items-center lg:w-auto lg:bg-transaprent  lg:h-auto"
+                            :class="{ 'block': isOpen, 'hidden': !isOpen }"
+                            @click.away="isOpen = false"
+                            x-show.transition="true"
+                            >
+                                <ul class="list-reset lg:flex justify-end flex-1 items-center px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                                    <li class="mr-3">
+                                        <a class="bg-purple-900 text-white block px-3 py-2 rounded-md text-sm font-medium lg:text-sm" href="swap.html" @click="isOpen = false" >Swap
+                                        </a>
+                                    </li>
+                                    <li class="mr-3">
+                                        <a class="text-white block px-3 py-2 rounded-md font-medium hover:bg-purple-400 hover:bg-opacity-75 lg:text-sm"
+                                        href="#"
+                                        @click="isOpen = false"
+                                        >Pool
+                                        </a>
+                                    </li>
+                                    <li class="mr-3">
+                                        <a class="text-white block px-3 py-2 rounded-md font-medium hover:bg-purple-400 hover:bg-opacity-75 lg:text-sm"
+                                        href="#"
+                                        @click="isOpen = false"
+                                        >Trade
+                                        </a>
+                                    </li>
+                                    <li class="mr-3">
+                                        <a class="text-white block px-3 py-2 rounded-md font-medium hover:bg-purple-400 hover:bg-opacity-75 lg:text-sm"
+                                        href="#"
+                                        @click="isOpen = false"
+                                        >Bridges
+                                        </a>
+                                    </li>
+                                    <li class="mr-3">
+                                        <a class="text-white block px-3 py-2 rounded-md font-medium hover:bg-purple-400 hover:bg-opacity-75 lg:text-sm"
+                                        href="#"
+                                        @click="isOpen = false"
+                                        >Lend
+                                        </a>
+                                    </li>
+                                    <li class="mr-3">
+                                        <a class="text-white block px-3 py-2 rounded-md font-medium hover:bg-purple-400 hover:bg-opacity-75 lg:text-sm"
+                                        href="#"
+                                        @click="isOpen = false"
+                                        >Borrow
+                                        </a>
+                                    </li>
+                                    <li class="mr-3">
+                                        <a class="text-white block px-3 py-2 rounded-md font-medium hover:bg-purple-400 hover:bg-opacity-75 lg:text-sm"
+                                        href="#"
+                                        @click="isOpen = false"
+                                        >Stake
+                                        </a>
+                                    </li>
+                                    <li class="mr-3">
+                                        <a class="text-white block px-3 py-2 rounded-md font-medium hover:bg-purple-400 hover:bg-opacity-75 lg:text-sm"
+                                        href="#"
+                                        @click="isOpen = false"
+                                        >More
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- connect -->
+                        <div class="ml-4 flex items-center md:ml-6">
+                            <button type="button" class="px-4 py-2 border-gradient rounded-lg text-white bg-gradient hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset focus:ring-purple-500">
+                                Connect <span class="lg:inline-flex hidden"> wallet</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        
+            <main class="mt-16">
+                <div class="container mx-auto py-6 sm:px-6 lg:px-8 px-2">
+                    <div class="lg:grid grid-cols-8 gap-4">
+                        <div class="col-span-2 md:col-span-3 bg-blue-01 border border-blue-900 p-3 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <span class="relative z-0 inline-flex rounded-md bg-blue-02">
+                                    <button type="button" class="relative inline-flex items-center px-4 py-2 rounded-md bg-purple-600 text-sm font-medium text-white hover:bg-blue-900 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                                    Swap
+                                    </button>
+                                    <button type="button" class="-ml-px relative inline-flex items-center px-4 py-2 text-sm font-medium text-white hover:bg-purple-400 hover:bg-opacity-75 focus:z-10 focus:outline-none rounded-md focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                                    Limit
+                                    </button>
+                                    <button type="button" class="-ml-px relative inline-flex items-center px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-purple-400 hover:bg-opacity-75 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                                    Liquid
+                                    </button>
+                                </span>
+                                <div>
+                                    <span class="relative inline-flex items-center p-2 text-sm text-amber-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentcolor"><path d="m19.616 6.48.014-.017-4-3.24-1.26 1.554 2.067 1.674a2.99 2.99 0 0 0-1.394 3.062c.15.899.769 1.676 1.57 2.111.895.487 1.68.442 2.378.194L18.976 18a.996.996 0 0 1-1.39.922.995.995 0 0 1-.318-.217.996.996 0 0 1-.291-.705L17 16a2.98 2.98 0 0 0-.877-2.119A3 3 0 0 0 14 13h-1V5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-4h1c.136 0 .267.027.391.078a1.028 1.028 0 0 1 .531.533A.994.994 0 0 1 15 16l-.024 2c0 .406.079.799.236 1.168.151.359.368.68.641.951a2.97 2.97 0 0 0 2.123.881c.406 0 .798-.078 1.168-.236.358-.15.68-.367.951-.641A2.983 2.983 0 0 0 20.976 18L21 9a2.997 2.997 0 0 0-1.384-2.52zM11 8H4V5h7v3zm7 2a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"></path></svg>
+                                        <span class="ml-1 font-bold text-lg">92</span>
+                                    </span>
+                                    
+                                    <span class="relative z-0 inline-flex shadow-sm rounded-md">
+                                        <span class="-ml-px relative block">
+                                            <button type="button" class="relative inline-flex items-center p-2 rounded-lg text-white bg-transparent hover:bg-purple-800 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset focus:ring-purple-500" id="settings-menu-button" aria-expanded="true" aria-haspopup="true">
+                                                <span class="sr-only">Open settings</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path><path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path></svg>
+                                            </button>
+                                    
+                                            <!--
+                                                Dropdown menu, show/hide based on menu state.
+                                        
+                                                Entering: "transition ease-out duration-100"
+                                                From: "transform opacity-0 scale-95"
+                                                To: "transform opacity-100 scale-100"
+                                                Leaving: "transition ease-in duration-75"
+                                                From: "transform opacity-100 scale-100"
+                                                To: "transform opacity-0 scale-95"
+                                            -->
+                                            <!-- <div class="origin-top-right absolute right-0 mt-2 -mr-1 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="settings-menu-button" tabindex="-1">
+                                                <div class="py-1" role="none">
+                                                
+                                                </div>
+                                            </div> -->
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <label for="pay" class="block text-sm font-medium text-white">Pay:</label>
+                                <div class="mt-1 rounded-md bg-indigo-200">
+                                    <div class="relative p-1">
+                                        <input type="text" name="pay" id="pay" class="bg-transparent font-bold text-2xl text-black border-transparent w-full pr-28 rounded-md focus:outline-none focus:ring-0 focus:border-transparent" placeholder="0.0">
+                                        <div class="absolute inset-y-0 right-2 flex items-center">
+                                            <button type="button" class="text-indigo-900 bg-white inline-flex items-center pl-4 pr-2 py-2 rounded-md hover:bg-indigo-800 hover:text-white focus:outline-none"
+                                            @click="isDialogOpen = true">
+                                                <img src="assets/tokens/eth.svg" alt="Ethereum">
+                                                <span class="ml-2 font-bold uppercase"> ETH </span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentcolor"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path></svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between px-4 py-2 text-base text-indigo-700">
+                                        <span>~ $3,142</span>
+                                        <span>Ethereum</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <label for="receive" class="block text-sm font-medium text-white">Receive:</label>
+                                <div class="mt-1 rounded-md  bg-indigo-200">
+                                    <div class="relative p-1">
+                                        <input type="text" name="receive" id="receive" class="bg-transparent font-bold text-2xl text-black border-transparent w-full pr-28 rounded-md focus:outline-none focus:ring-0 focus:border-transparent" placeholder="0.0">
+                                        <div class="absolute inset-y-0 right-2 flex items-center">
+                                            <button type="button" class="text-indigo-900 bg-white inline-flex items-center pl-4 pr-2 py-2 rounded-md hover:bg-indigo-800 hover:text-white focus:outline-none">
+                                                <img src="assets/tokens/usdc.svg" alt="Ethereum" class="h-5">
+                                                <span class="ml-2 font-bold uppercase"> USDC </span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentcolor"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path></svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between px-4 py-2 text-base text-indigo-700">
+                                        <span>~ $3,142</span>
+                                        <span>USD Coin</span>
+                                    </div>
+                                </div>
+                            </div>
+  
+                            <button type="button" class="mt-4 w-full px-6 py-3 border-gradient rounded-lg text-white bg-gradient hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset focus:ring-purple-500">
+                                Connect wallet
+                            </button>
+
+                            <div class="mt-4 rounded-lg bg-blue-02 p-5 text-white text-sm text-purple-300 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span>Expected Price</span>
+                                    <span>12458 USDC</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span>Price Impact</span>
+                                    <span>12458 USDC</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span>Minimum received</span>
+                                    <span>12458 USDC</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span>Transaction Fee</span>
+                                    <span>12458 USDC</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-5">
+                            <img src="assets/charts.png" alt="chart placeholder">
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+       
+  
+    </body>
+</html>
