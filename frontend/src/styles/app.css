@@ -1,0 +1,16 @@
+@tailwind base;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Work+Sans:wght@500;600&display=swap');
+.bg-blue-01{background-color: #0f0954;}
+.bg-blue-02{background-color: #140241;}
+.bg-blue-03{background-color: #130224;}
+.bg-blue-04{background-color: #1b1a7d;}
+.bg-purple-01{background-color: #9100c3;}
+.bg-purple-02{background-color: #a981af;}
+.bg-gold-01{background-color: #9e5500;}
+.bg-gold-02{background-color: #cc901b;}
+.bg-gradient{background-image: linear-gradient(to right, #9100c3, #1b1a7d)!important;}
+.border-gradient {    border: 1px solid #9100c3;  }
+.bg-orbit{background: url(https://app.sushi.com/images/gather-assets/orbit-bg.png) no-repeat scroll center 80% transparent;}
+.bg-city {background: url(https://app.sushi.com/images/gather-assets/city-bg.jpg) no-repeat scroll center top transparent;    background-size: cover;}
+body,html,p,h1,h2,h3,h4,h5,h6{font-family: "Poppins", Helvetica, sans-serif;}
