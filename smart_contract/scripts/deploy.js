@@ -3,13 +3,13 @@ async function main() {
   
     console.log("Deploying contracts with the account:", deployer.address);
   
-    const GatherswapFactory = await ethers.getContractFactory("GatherswapFactory");
-    const factory = await GatherswapFactory.deploy("0xf370C0f60c3022E2116846893c029b2E1302A513");
+    // const GatherswapFactory = await ethers.getContractFactory("GatherswapFactory");
+    // const factory = await GatherswapFactory.deploy("0x7269085Bba5a114D07A4c56546F11366C7Ba124A");
   
-    console.log("Factory address:", factory.address);
+    // console.log("Factory address:", factory.address);
 
     const GatherswapRouter = await ethers.getContractFactory("GatherswapRouter02");
-    const router = await GatherswapRouter.deploy("0x4eD689DcA757299A1b03050072650eaA3aEa864B", "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2");
+    const router = await GatherswapRouter.deploy("0xa7dA2c3DE295075ed5fCAFe8473ab901F5B73AE5", "0xc778417E063141139Fce010982780140Aa0cD5Ab");
   
     console.log("Router address:", router.address);
   }
