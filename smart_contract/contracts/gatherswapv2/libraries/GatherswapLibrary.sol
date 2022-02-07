@@ -23,7 +23,7 @@ library GatherswapLibrary {
                 hex'ff',
                 factory,
                 keccak256(abi.encodePacked(token0, token1)),
-                hex'e18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303' // init code hash
+                hex'a57d0406bddcfac664fc4aa67129acb35c1f55cc1488ee00f1dc6bd5877abbca' // init code hash
             ))));
     }
 
