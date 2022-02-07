@@ -15,7 +15,7 @@ interface IMigrator {
 }
 
 contract GatherswapPair is GatherswapERC20 {
-    using SafeMath  for uint;
+    using SafeMathGatherswap for uint;
     using UQ112x112 for uint224;
 
     uint public constant MINIMUM_LIQUIDITY = 10**3;

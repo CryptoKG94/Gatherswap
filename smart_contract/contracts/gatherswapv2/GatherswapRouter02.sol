@@ -11,7 +11,7 @@ import './interfaces/IERC20.sol';
 import './interfaces/IWETH.sol';
 
 contract GatherswapRouter02 is IGatherswapRouter02 {
-    using SafeMath for uint;
+    using SafeMathGatherswap for uint;
 
     address public immutable override factory;
     address public immutable override WETH;

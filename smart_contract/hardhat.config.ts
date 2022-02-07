@@ -13,7 +13,7 @@ import "hardhat-spdx-license-identifier"
 import "hardhat-typechain"
 import "hardhat-watcher"
 import "solidity-coverage"
-import "./tasks"
+// import "./tasks"
 
 import { HardhatUserConfig } from "hardhat/types"
 import { removeConsoleLog } from "hardhat-preprocessor"
@@ -350,7 +350,7 @@ const config: HardhatUserConfig = {
   },
   watcher: {
     compile: {
-      tasks: ["compile"],
+      // tasks: ["compile"],
       files: ["./contracts"],
       verbose: true,
     },

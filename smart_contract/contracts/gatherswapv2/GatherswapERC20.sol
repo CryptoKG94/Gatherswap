@@ -5,7 +5,7 @@ pragma solidity =0.6.12;
 import './libraries/SafeMath.sol';
 
 contract GatherswapERC20 {
-    using SafeMath for uint;
+    using SafeMathGatherswap for uint;
 
     string public constant name = 'Warden LPs';
     string public constant symbol = 'Warden-LP';
