@@ -51,10 +51,6 @@ function MyApp({ Component, pageProps, fallback, err }) {
   // change just the locale and maintain all other route information including href's query
   // router.push({ pathname, query }, asPath, { locale: 'en' })
 
-  if (pathname == '/') {
-    // router.replace('/landing')
-  }
-
   console.log('[kg]===> router:', router)
   // let locale_ = 0;
   useEffect(() => {
