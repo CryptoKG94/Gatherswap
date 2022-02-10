@@ -40,7 +40,10 @@ const HeaderNew: FC<HeaderNewProps> = ({ inputCurrency, outputCurrency }) => {
             query: getQuery(inputCurrency, outputCurrency),
           }}
         >
-          <Typography weight={700} className="items-center px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-purple-400 hover:bg-opacity-75">
+          <Typography
+            weight={700}
+            className="items-center px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-purple-400 hover:bg-opacity-75"
+          >
             {i18n._(t`Swap`)}
           </Typography>
         </NavLink>
@@ -51,7 +54,10 @@ const HeaderNew: FC<HeaderNewProps> = ({ inputCurrency, outputCurrency }) => {
             query: getQuery(inputCurrency, outputCurrency),
           }}
         >
-          <Typography weight={700} className="items-center px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-purple-400 hover:bg-opacity-75">
+          <Typography
+            weight={700}
+            className="items-center px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-purple-400 hover:bg-opacity-75"
+          >
             {i18n._(t`Limit`)}
           </Typography>
         </NavLink>

@@ -50,7 +50,7 @@ const SwapAssetPanel = ({
   currencies,
 }: SwapAssetPanel) => {
   return (
-    <div className="rounded-[14px] border border-dark-700 hover:border-dark-900 bg-indigo-200 p-3 flex flex-col gap-4">
+    <div className="rounded-[14px] border border-dark-700 hover:border-dark-900 bg-blue-03 p-3 flex flex-col gap-4">
       {header({
         disabled,
         onChange,
@@ -152,12 +152,12 @@ const InputPanel: FC<
         value={value || ''}
         onUserInput={onChange}
         placeholder="0.00"
-        className="leading-[36px] focus:placeholder:text-low-emphesis flex-grow w-full text-left font-bold text-2xl text-black bg-transparent text-inherit disabled:cursor-not-allowed"
+        className="leading-[36px] focus:placeholder:text-low-emphesis flex-grow w-full text-left font-bold text-2xl bg-transparent text-inherit disabled:cursor-not-allowed"
         autoFocus
       />
       <Typography
         variant="xs"
-        className="text-secondary absolute bottom-1.5 pointer-events-none"
+        className="text-purple-300 absolute bottom-1.5 pointer-events-none"
         component="span"
         style={{ left: width }}
       >
@@ -225,7 +225,7 @@ const SwapAssetPanelHeader: FC<
 
   return (
     <div className="flex items-end justify-between gap-2">
-      {walletToggle ? walletToggle({ spendFromWallet }) : <div/> }
+      {walletToggle ? walletToggle({ spendFromWallet }) : <div />}
       <CurrencySearchModal
         selectedCurrency={currency}
         onCurrencySelect={(currency) => onSelect && onSelect(currency)}

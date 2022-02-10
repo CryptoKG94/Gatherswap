@@ -144,19 +144,22 @@ export function CurrencySearch({
       <HeadlessUiModal.Header onClose={onDismiss} header={i18n._(t`Pay with:`)} />
       {showSearch && (
         <div className="my-1 relative rounded-md shadow-sm text-indigo-900">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentcolor"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path><path d="M11.412 8.586c.379.38.588.882.588 1.414h2a3.977 3.977 0 0 0-1.174-2.828c-1.514-1.512-4.139-1.512-5.652 0l1.412 1.416c.76-.758 2.07-.756 2.826-.002z"></path></svg>
-            </div>
-            <input
-              type="text"
-              id="token-search-input"
-              placeholder={i18n._(t`Search token name or paste address`)}
-              autoComplete="off"
-              value={searchQuery}
-              onChange={handleInput}
-              onKeyDown={handleEnter}
-              className="focus:ring-indigo-500 focus:border-indigo-500 text-indigo-900 focus:bg-white block w-full pl-10 sm:text-sm border-indigo-300 font-bold text-base p-4 appearance-none rounded-md" // w-full bg-[rgba(0,0,0,0.2)] border border-dark-800 focus:border-blue rounded placeholder-secondary font-bold text-base p-4 appearance-none
-            />
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentcolor">
+              <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path>
+              <path d="M11.412 8.586c.379.38.588.882.588 1.414h2a3.977 3.977 0 0 0-1.174-2.828c-1.514-1.512-4.139-1.512-5.652 0l1.412 1.416c.76-.758 2.07-.756 2.826-.002z"></path>
+            </svg>
+          </div>
+          <input
+            type="text"
+            id="token-search-input"
+            placeholder={i18n._(t`Search token name or paste address`)}
+            autoComplete="off"
+            value={searchQuery}
+            onChange={handleInput}
+            onKeyDown={handleEnter}
+            className="focus:ring-indigo-500 focus:border-indigo-500 text-indigo-900 focus:bg-white block w-full pl-10 sm:text-sm border-indigo-300 font-bold text-base p-4 appearance-none rounded-md" // w-full bg-[rgba(0,0,0,0.2)] border border-dark-800 focus:border-blue rounded placeholder-secondary font-bold text-base p-4 appearance-none
+          />
         </div>
       )}
       {showCommonBases && <CommonBases />}
@@ -185,7 +188,10 @@ export function CurrencySearch({
             className="border-t border-indigo-900 p-4 text-sm hover:text-indigo-200 text-indigo-300"
             variant="empty"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentcolor"><path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path><path d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentcolor">
+              <path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path>
+              <path d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z"></path>
+            </svg>
             {i18n._(t`Manage Token Lists`)}
           </Button>
         </div>

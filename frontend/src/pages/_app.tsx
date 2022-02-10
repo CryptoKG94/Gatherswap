@@ -40,16 +40,22 @@ if (typeof window !== 'undefined' && !!window.ethereum) {
   window.ethereum.autoRefreshOnNetworkChange = false
 }
 
-//initialization function
+//initiali function
 // initTranslation(i18n)
-
 
 // @ts-ignore TYPE NEEDS FIXING
 function MyApp({ Component, pageProps, fallback, err }) {
   const router = useRouter()
-  const { locale, events } = router
+  const { locale, events, pathname, asPath, query} = router
 
-  console.log('[kg]===> locale: ', locale)
+  // change just the locale and maintain all other route information including href's query
+  // router.push({ pathname, query }, asPath, { locale: 'en' })
+
+  if (pathname == '/') {
+    // router.replace('/landing')
+  }
+
+  console.log('[kg]===> router:', router)
   // let locale_ = 0;
   useEffect(() => {
     // @ts-ignore TYPE NEEDS FIXING
@@ -80,7 +86,7 @@ function MyApp({ Component, pageProps, fallback, err }) {
       // @ts-ignore TYPE NEEDS FIXING
       // i18n.loadLocaleData(locale, { plurals: plurals[locale.split('_')[0]] })
       i18n.loadLocaleData(locale, { plurals: en })
-      console.log('[kg]===> en: ', en)
+      console.log('[kg]===> en:', en)
 
       try {
         // Load messages from AWS, use q session param to get latest version from cache
@@ -103,7 +109,7 @@ function MyApp({ Component, pageProps, fallback, err }) {
     // load(locale)
     load('en')
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [locale])
 
   // Allows for conditionally setting a provider to be hoisted per page
   const Provider = Component.Provider || Fragment

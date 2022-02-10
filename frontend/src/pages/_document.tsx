@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-document-import-in-page */
 // pages/_document.js
 import { Head, Html, Main, NextScript } from 'next/document'
+// import Script from 'next/script'
 
 const APP_NAME = 'GatherSwap'
 const APP_DESCRIPTION = 'Swap, yield, lend, borrow, leverage, limit, launch all on one community driven ecosystem'
@@ -29,6 +30,11 @@ export default function Document() {
 
         <link rel="manifest" href="/manifest.json" />
         <link rel="shortcut icon" href="/favicon.ico" />
+
+        {/* <Script src="https://cdn.tailwindcss.com"></Script>
+        <Script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></Script>
+        <Script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></Script> */}
+        
       </Head>
       <body>
         <Main />

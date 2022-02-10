@@ -367,12 +367,16 @@ const Swap = ({ banners }) => {
         tokens={importTokensNotInDefault}
         onConfirm={handleConfirmTokenWarning}
       />
+      <div className="lg:grid grid-cols-8 gap-4">
+      <div className="col-span-2 md:col-span-3">
       <SwapLayoutCard>
         <div className="px-2">
           <HeaderNew inputCurrency={currencies[Field.INPUT]} outputCurrency={currencies[Field.OUTPUT]} />
         </div>
         <div className="flex flex-col gap-3">
-          <label htmlFor="pay" className="flex -mb-2 text-sm font-medium text-white">Pay:</label>
+          <label htmlFor="pay" className="flex pt-1 -mb-2 text-sm font-medium text-white">
+            Pay:
+          </label>
           <SwapAssetPanel
             spendFromWallet={true}
             header={(props) => (
@@ -400,7 +404,9 @@ const Swap = ({ banners }) => {
               <ArrowDownIcon width={14} className="text-high-emphesis hover:text-white" />
             </div>
           </div>
-          <label htmlFor="pay" className="flex mt-2 -mb-2 text-sm font-medium text-white">Receive:</label>
+          <label htmlFor="pay" className="flex mt-2 -mb-2 text-sm font-medium text-white">
+            Receive:
+          </label>
           <SwapAssetPanel
             spendFromWallet={true}
             header={(props) => (
@@ -434,18 +440,18 @@ const Swap = ({ banners }) => {
           )}
 
           {swapIsUnsupported ? (
-            <Button color="red" disabled fullWidth className="rounded-2xl md:rounded bg-gradient">
+            <Button color="red" disabled fullWidth className="rounded-2xl md:rounded py-3 bg-gradient">
               {i18n._(t`Unsupported Asset`)}
             </Button>
           ) : !account ? (
-            <Web3Connect color="blue" variant="filled" fullWidth className="rounded-2xl md:rounded bg-gradient" />
+            <Web3Connect color="blue" variant="filled" fullWidth className="rounded-2xl md:rounded py-3 bg-gradient" />
           ) : showWrap ? (
             <Button
               fullWidth
               color="blue"
               disabled={Boolean(wrapInputError)}
               onClick={onWrap}
-              className="rounded-2xl md:rounded bg-gradient"
+              className="rounded-2xl md:rounded py-3 bg-gradient"
             >
               {wrapInputError ??
                 (wrapType === WrapType.WRAP
@@ -488,7 +494,7 @@ const Swap = ({ banners }) => {
                   disabled={
                     !isValid || approvalState !== ApprovalState.APPROVED || (priceImpactSeverity > 3 && !isExpertMode)
                   }
-                  className="rounded-2xl md:rounded bg-gradient"
+                  className="rounded-2xl md:rounded py-3 bg-gradient"
                 >
                   {priceImpactSeverity > 3 && !isExpertMode
                     ? i18n._(t`Price Impact High`)
@@ -517,7 +523,7 @@ const Swap = ({ banners }) => {
               }}
               id="swap-button"
               disabled={!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError}
-              className="rounded-2xl md:rounded bg-gradient"
+              className="rounded-2xl py-3 md:rounded bg-gradient"
             >
               {swapInputError
                 ? swapInputError
@@ -532,9 +538,11 @@ const Swap = ({ banners }) => {
           {swapIsUnsupported ? <UnsupportedCurrencyFooter currencies={[currencies.INPUT, currencies.OUTPUT]} /> : null}
         </div>
       </SwapLayoutCard>
-      {/* <div className="col-span-6 md:col-span-5">
-          <Image src="https://app.sushi.com/images/gather-assets/charts.png" alt="chart placeholder" layout='fill'/>
-      </div> */}
+      </div>
+      <div className="col-span-6 md:col-span-5">
+          <img src="images/gather-assets/charts.png" alt="chart placeholder"/>
+      </div>
+      </div>
       {/* <Banner banners={banners} /> */}
     </>
   )

@@ -29,7 +29,7 @@ export default function Web3Connect({ color = 'gray', size = 'sm', className = '
       variant="outlined"
       color={color}
       className={classNames(className, '!border-none')}
-      size={size}
+      // size={size}
       {...rest}
     >
       {i18n._(t`Connect to a wallet`)}

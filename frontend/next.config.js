@@ -46,7 +46,7 @@ const nextConfig = {
   pwa: {
     dest: 'public',
     // runtimeCaching,
-    dynamicStartUrlRedirect: '/swap',
+    dynamicStartUrlRedirect: '/landing',
     disable: process.env.NODE_ENV === 'development',
   },
   images: {
@@ -58,7 +58,7 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/swap',
+        destination: '/landing',
         permanent: true,
       },
     ]
@@ -68,6 +68,14 @@ const nextConfig = {
       {
         source: '/stake',
         destination: '/bar',
+      },
+      {
+        source: '/',
+        destination: '/legacy/landing',
+      },
+      {
+        source: '/landing',
+        destination: '/legacy/landing',
       },
       {
         source: '/add/:token*',
@@ -134,7 +142,7 @@ const nextConfig = {
   //   defaultLocale: sourceLocale,
   // },
   network: {
-    chainIds: [ChainId.ETHEREUM, ChainId.ARBITRUM],
+    chainIds: [ChainId.ETHEREUM, ChainId.RINKEBY, ChainId.ARBITRUM],
     defaultChainId: ChainId.ETHEREUM,
     domains: [
       {

@@ -4,7 +4,6 @@ import { WalletLinkConnector } from '@web3-react/walletlink-connector'
 import Container from 'app/components/Container'
 import { NAV_CLASS } from 'app/components/Header/styles'
 import useMenu from 'app/components/Header/useMenu'
-import LanguageSwitch from 'app/components/LanguageSwitch'
 import Web3Network from 'app/components/Web3Network'
 import Web3Status from 'app/components/Web3Status'
 import { useActiveWeb3React } from 'app/services/web3'
@@ -13,6 +12,7 @@ import { useETHBalances } from 'app/state/wallet/hooks'
 import Link from 'next/link'
 import React, { FC } from 'react'
 
+import NavLink from '../NavLink'
 import { NavigationItem } from './NavigationItem'
 
 const HEADER_HEIGHT = 64
@@ -35,10 +35,20 @@ const Desktop: FC = () => {
             <div className="flex gap-4 px-6 items-center justify-between">
               <div className="flex gap-4">
                 <div className="flex items-center flex-shrink-0 text-white mr-6">
-                  <img className="h-8 w-8" src="/images/gather-assets/GatherSwap-Logo-Icon.svg" alt="Gather logo" width="24px" height="24px" />
-                  <span className="text-white font-bold ml-2">GatherSwap</span>
+                  <NavLink href="/landing">
+                    <a className="text-white flex items-center">
+                      <img
+                        className="h-8 w-8"
+                        src="/images/gather-assets/GatherSwap-Logo-Icon.svg"
+                        alt="Gather logo"
+                        width="24px"
+                        height="24px"
+                      />
+                      <span className="text-white font-bold ml-2">GatherSwap</span>
+                    </a>
+                  </NavLink>
                 </div>
-                
+
                 {menu.map((node) => {
                   return <NavigationItem node={node} key={node.key} />
                 })}
@@ -62,7 +72,7 @@ const Desktop: FC = () => {
                   <Web3Status />
                 </div>
                 <div className="hidden lg:flex">
-                  <LanguageSwitch />
+                  {/* <LanguageSwitch /> */}
                 </div>
               </div>
             </div>

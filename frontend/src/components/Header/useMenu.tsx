@@ -38,7 +38,7 @@ const useMenu: UseMenu = () => {
       key: 'swap',
       title: i18n._(t`Swap`),
       link: '/swap',
-      icon: <SwitchVerticalIcon width={20} />,
+      // icon: <SwitchVerticalIcon width={20} />,
     }
 
     // If limit orders is enabled, replace swap button with a submenu under trade
@@ -129,12 +129,12 @@ const useMenu: UseMenu = () => {
       })
 
     // if (exploreMenu.length > 0)
-      // mainItems.push({
-      //   key: 'explore',
-      //   title: i18n._(t`Explore`),
-      //   items: exploreMenu,
-      //   icon: <GlobeIcon width={20} />,
-      // })
+    // mainItems.push({
+    //   key: 'explore',
+    //   title: i18n._(t`Explore`),
+    //   items: exploreMenu,
+    //   icon: <GlobeIcon width={20} />,
+    // })
 
     if (featureEnabled(Feature.LIQUIDITY_MINING, chainId)) {
       const farmItems = {
