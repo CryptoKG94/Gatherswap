@@ -1,0 +1,42 @@
+{
+  "name": "@sushiswap/limit-order-sdk",
+  "version": "1.0.0-canary.51",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "module": "dist/limit-order-sdk.esm.js",
+  "repository": {
+    "url": "sushiswap/sdk",
+    "directory": "packages/limit-order-sdk"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "lint": "tsdx lint src test",
+    "build": "tsdx build",
+    "watch": "tsdx watch",
+    "test": "tsdx test --passWithNoTests",
+    "prepublishOnly": "npx tsdx build"
+  },
+  "dependencies": {
+    "@ethersproject/abi": "^5.4.0",
+    "@ethersproject/abstract-signer": "^5.4.0",
+    "@ethersproject/bytes": "^5.4.0",
+    "@ethersproject/contracts": "^5.4.0",
+    "@ethersproject/experimental": "^5.4.0",
+    "@ethersproject/signing-key": "^5.4.0",
+    "@ethersproject/transactions": "^5.4.0",
+    "@sushiswap/core-sdk": "1.0.0-canary.65",
+    "eip-712": "^0.4.0",
+    "isomorphic-unfetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "tsdx": "^0.14.1"
+  },
+  "gitHead": "f3ce06cc3ef4f7fbfd0f4ab59059ac774b159043"
+}

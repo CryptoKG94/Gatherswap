@@ -1,0 +1,38 @@
+{
+  "name": "@sushiswap/trident-sdk",
+  "version": "1.0.0-canary.75",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "module": "dist/trident-sdk.esm.js",
+  "repository": {
+    "url": "sushiswap/sdk",
+    "directory": "packages/trident-sdk"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "lint": "tsdx lint src test",
+    "build": "tsdx build",
+    "watch": "tsdx watch",
+    "test": "tsdx test --passWithNoTests",
+    "prepublishOnly": "npx tsdx build"
+  },
+  "dependencies": {
+    "@ethersproject/abi": "^5.4.0",
+    "@ethersproject/bignumber": "^5.4.0",
+    "@sushiswap/core-sdk": "1.0.0-canary.65",
+    "@sushiswap/tines": "1.0.0-canary.48",
+    "@sushiswap/trident": "1.0.0-canary.27",
+    "tiny-invariant": "^1.1.0"
+  },
+  "devDependencies": {
+    "tsdx": "^0.14.1"
+  },
+  "gitHead": "f3ce06cc3ef4f7fbfd0f4ab59059ac774b159043"
+}

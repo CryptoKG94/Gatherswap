@@ -1,0 +1,22 @@
+{
+  "name": "sdk",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "yarn workspaces foreach run test",
+    "build": "yarn workspaces foreach run build",
+    "watch": "yarn workspaces foreach run watch"
+  },
+  "devDependencies": {
+    "@sushiswap/prettier-config": "^0.1.0",
+    "@types/node": "^16.9.1",
+    "lerna": "^4.0.0",
+    "prettier": "^2.4.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "packageManager": "yarn@3.1.1"
+}
